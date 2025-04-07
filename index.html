@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32-CAM Live Stream</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      font-family: Arial;
+    }
+    img {
+      border: 5px solid #333;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ESP32 Live Stream</h1>
+  <input type="text" id="ipInput" placeholder="ESP32 IP (e.g., 192.168.1.70)" />
+  <button onclick="connect()">Start Stream</button>
+  <br>
+  <img id="stream" width="640" height="480" style="display:none;">
+  <script>
+    function connect() {
+      const ip = document.getElementById("ipInput").value;
+      const streamUrl = `http://${ip}:81/stream`;
+      const img = document.getElementById("stream");
+      img.src = streamUrl;
+      img.style.display = "block";
+    }
+  </script>
+</body>
+</html>
